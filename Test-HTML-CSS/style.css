@@ -1,0 +1,236 @@
+body {margin:0;
+  background-image: url(./img/baner.jpg);
+  background-repeat:initial;
+}
+div ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 20px;
+  overflow: hidden;
+  background-color: #F79F3C;
+  position: relative;
+  height: 50px;
+  color:brown;
+  opacity: 0.9;
+  z-index: 998;
+  font-s
+}
+
+
+div ul li {
+  float: right;
+}
+
+div ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight: bold;
+
+}
+
+div ul li a:hover:not(.active) {
+  background-color: #133;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+.active {
+  background-color: #111;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+.logo{
+  float: left;
+  width: 55%;
+  height: 150px;
+  margin-top: -30px;
+  margin-left: -30px;
+  margin-bottom: -20px;
+  display: block;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 86%, 0% 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 0% 100%);
+  z-index: 999;
+
+}
+img
+{
+
+  position: relative;
+}
+.custom{
+  border-right: 120px solid transparent;
+  border-top: 120px solid #fc783f;
+  width: 20%;
+  z-index: 1000;
+  position: absolute;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+.icon{
+  z-index: 1001;
+}
+.text-icon{
+  z-index: 1002;
+  position: absolute;
+  margin-left: 134px;
+  text-align: center;
+  height: 80px;
+    margin-top: -10px;
+    font-size: 40px;
+    color: palegoldenrod;
+    font-style: italic;
+
+}
+.C02 {
+  /*background-color: #F79F3C;  */
+  position: relative;
+
+
+}
+.CO2 img{
+  background-color: #F79F3C;  
+
+}
+#header{
+  padding: 10px;
+  z-index:999;
+
+
+}
+/*.banner{
+  margin-top: -60px;
+  z-index: 1px;
+   position: absolute;
+   }*/
+   .PageBody{
+    height: 500px;
+  }
+  .titleBody{
+
+    text-align: left;
+    margin-top:200px;
+    margin-left: 100px; 
+    height: 100%;
+  }
+  footer{
+    background-color: #FC783F;
+    width: 100%;
+    height: 170px;
+    position: absolute;
+
+  }
+  .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius:5px; 
+    margin-top: 31px;
+  }
+
+  .button:hover {
+    background-color: green;
+  }
+  .footer-left{
+    width: 50%;
+    color: white;
+    position: absolute;
+    padding: 5px;
+    margin-top: 30px;
+    float: left;
+  }
+  .footer-right{
+   width: 47%;
+   margin-top: 20px;
+   color: white;
+   position: relative;
+   padding: 5px;
+   float: right;
+
+ }
+ .C03{
+  width: 40%;
+  float: left;
+
+}
+
+.VS{
+  border-radius: 50%;
+  text-align: bottom;
+
+}
+
+.VS:hover {
+  border-radius: 50%;
+}
+
+.VS img{
+
+  height: auto;
+  border-radius: 50%;
+  
+
+}
+
+.desc {
+  padding: 15px;
+  text-align: bottom;
+  border-radius: 50%;
+}
+
+.C04{
+  width: 60%;
+  float: right;
+  margin-right: -30px;
+}
+td{
+  size: 25%;
+  text-align: center;
+  width: 200px;
+
+}
+.so{
+  border-right: 1px solid white;
+}
+.C05{
+  width: 65%;
+  float: left;
+
+
+}
+
+.C06{
+  width: 35%;
+  float: right;
+
+}
+button{
+  margin-top: -15;
+}
+h4{
+  font-size: 30px;
+}
+
+/*animation*/
+@-webkit-keyframes mymove {
+ from {left: 0px;}
+ to {left: 200px; }
+}
+
+@keyframes mymove {
+ from {left: 0px;}
+ to {left: 200px;}
+}
+
+
+div.titleBody{
+  -webkit-animation-name: mymove; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 5s; /* Safari 4.0 - 8.0 */
+  animation-name: mymove;
+  animation-duration: 5s;
+}
