@@ -1,0 +1,45 @@
+﻿1/Toán tử ++ không support  trong ruby nó chỉ giống toán tử + bình  thường.
+Vd : 5 + 5 = 10  , 5 ++ 5 =10
+2/ a)if else
+ex 1 : 
+  	x = 18
+	if x < 18
+		puts ”khong duoc xem phim 18+ ”
+	else
+		puts “Chuc mung ,duoc phep xem phim 18+ hahaha!!!”
+	end
+b)unless
+ex 2 :  x = 19
+	unless x > 18
+		puts ”khong duoc xem phim 18+ ”
+	else
+		puts “Chuc mung ,duoc phep xem phim 18+ hahaha!!!”
+	end
+
+3/ Loop
+ ex : 
+	arr = [1 , 2 , 3]
+	arr.each {|a| puts a}
+4/
+ex: BCNN
+	def BCNN(a,b)
+   	a.lcm(b)
+   	end
+5/ex 1 : begin ,rescue
+	begin  
+   		puts 'I am before the raise.'  
+   		raise 'An error has occurred.'  
+   		puts 'I am after the raise.'  
+	rescue  
+   		puts 'I am rescued.'  
+	end  
+EX 2 : begin , e
+	
+	begin
+  	 raise 'A test exception.'
+	rescue Exception => e
+  	 puts e.message
+   	puts e.backtrace.inspect
+	ensure
+  	 puts "Ensuring execution"
+	end
