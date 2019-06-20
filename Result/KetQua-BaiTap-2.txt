@@ -1,0 +1,270 @@
+﻿					Training Ruby – day2
+1/Class – method attr_accessor
+
+
+ 	
+	ex : khai báo class Person nhập và xuất vào name,age,full
+		class Person
+  			attr_accessor :name , :age , :fullname
+ 			def Person1
+    				puts "Name : #{name}"
+    				puts "Birdthday : #{age}"
+    				puts "Fullname : #{fullname}"
+
+  			end
+		end
+
+		xx =Person.new
+		xx.name = "Ha"
+		xx.age = "21"
+		xx.fullname ="Nguyen Xuan Ha"
+		xx.Person1 
+Có 4 kiểu : Local Variables  , Instance Variables ,Class Variables,Global Variables
+
+- Local Variables : 	begin with a lowercase letter or _ .The scope of a local variable ranges from class, module, def, or do to the corresponding end or from a block's opening brace to its close brace {}. The lifetime of local variables is determined when Ruby parses the program.
+
+Ex :  
+ def initialize(id, name, addr)
+	@cust_id =id
+	@cust_name =name
+	@cust_addr = addr
+end
+
+
+–> local variables are id, name and addr.
+
+
+-Instance Variables :    begin with @ .Uninitialized instance variables have the value nil and produce warnings with the -w option.
+Ex:  
+class Customer
+ @@no_of_customers = 0
+ def initialize(id, name, addr)
+  @cust_id = id
+  @cust_name = name
+  @cust_addr = addr
+end
+def display_details()
+  puts "Customer id #@cust_id"
+  puts "Customer name #@cust_name"
+  puts "Customer addr #@cust_addr"
+end
+end
+
+#Create Object
+cust1 = Customer.new("1","John","US")
+cust2 = Customer.new("2","Tommy","USA")
+
+#Call Methods
+cust1.display_details()
+cust2.display_details()	
+
+- Class Variables :    	begin with @@ and must be initialized before they can be used in method definitions.
+
+EX :  class Customer
+ @@no_of_customers = 0
+ def initialize(id, name, addr)
+  @cust_id = id
+  @cust_name = name
+  @cust_addr = addr
+end
+def display_details()
+  puts "Customer id #@cust_id"
+  puts "Customer name #@cust_name"
+  puts "Customer addr #@cust_addr"
+end
+def no_of_customers()
+  @@no_of_customers +=1
+  puts "Total Customer #@@no_of_customers"
+
+end
+end
+
+#Create Object
+cust1 = Customer.new("1","John","US")
+cust2 = Customer.new("2","Tommy","USA")
+
+#Call Methods
+cust1.display_details()
+cust2.display_details()
+
+
+cust1.no_of_customers();
+cust2.no_of_customers();
+
+
+→ Here @@no_of_customers is a class variable
+
+-Global Variables : begin with $. Uninitialized global variables have the value nil and produce warnings with the -w option.
+Assignment to global variables alters the global status. It is not recommended to use global variables. They make programs cryptic.
+Ex  : 
+
+$global_val = 100
+class Sac
+
+   def print_global
+     @global_val_total = $global_val + 1
+     puts "Total global_val is #$global_val"
+   end
+ end
+global1=Sac.new
+global1.print_global()
+-->Here $global_variable is a global variable
+
+
+2/ a)Ruby có tính kế thừa :
+trước tiên cấu trúc của 1 Object trong ruby → khởi tạo 1 vùng nhớ thì Object của ruby có các trường sao :
+ Thứ 1 : kclass → đây là con trỏ chỉ đến class của Object
+ Thứ 2 : iv_tbl :“instance variable table” đây là 1 mảng băm chứa đựng các biến instance của đối tượng này
+thứ 3 : flags (cờ hiệu Boolean) : đây là trạng thái 1 và 0 của Object
+Thứ 4 : m_tbl: “Method table ”, một bảng băm chứa địa chỉ instance method của class hay module
+Thứ 5 : super : con trỏ đến lớp cha của nó
+ b)Ruby có Đa kế thừa
+**Tuy ruby không cho phép 1 class đa kế thừa từ nhiều class. Nhưng để khắc phục lỗi này ruby đã dùng cơ chế Mix_in để mix_in các module lại.
+Min_in là gì ??? đây là cơ chế multi-inheritance,tăng khả năng tái tạo code và giải quyết vấn đề “diamond probem”
+
+
+EX : 
+
+module A
+  def  mixed_mothod
+    puts "hello from mixin A"
+  end
+end
+
+module B
+  include A
+  def  mixed_mothod
+    puts "hello from mixin B"
+  end
+end
+
+module C
+  include A
+  def  mixed_mothod
+    puts "hello from mixin C"
+  end
+end
+
+class D
+  include C
+  include B
+end
+
+F=D.new
+F.mixed_mothod()
+
+
+3/Ruby có Overriding
+Ex : class Bicycle
+  attr_reader :gears, :wheels, :seats
+  def initialize(gears = 1)
+    @wheels = 2
+    @seats = 1
+    @gears = gears
+  end
+end
+
+class Tandem < Bicycle
+  def initialize(gears)
+    super
+    @seats = 2
+  end
+end
+t = Tandem.new(2)
+puts t.gears
+puts t.wheels
+puts t.seats
+b = Bicycle.new
+puts b.gears
+puts b.wheels
+puts b.seats
+4/Không thể overload
+5/Quyền truy cập
+Quyền truy cập tức là phạm vi truy xuất các thuộc tính và phương thức của mỗi đối tượng. Ruby có 3 loại quyền truy cập là public, protected và private. Trong Ruby, tất cả các thuộc tính đều có quyền truy cập là private và không thể thay đổi được, còn các phương thức thì mặc định có quyền truy cập là public nhưng có thể thay đổi được.
+Quyền truy cập loại public cho phép chúng ta truy cập thành phần của đối tượng ở bên trong lẫn bên ngoài lớp. Quyền protected và private giống nhau ở chỗ đều không cho phép truy cập thành phần của đối tượng ở bên ngoài lớp, khác nhau ở chỗ private không gọi được với từ khóa self, còn protected thì được.
+Quyền truy cập đảm bảo an toàn cho dữ liệu không bị thay đổi cho dù là cố ý hay vô ý.
+-Public  : 
+ class Some
+
+     def method1
+         puts "public method1 called"
+     end
+
+    public
+
+     def method2
+         puts "public method2 called"
+     end
+
+     def method3
+         puts "public method3 called"
+         method1
+         self.method1
+     end
+end
+
+s = Some.new
+s.method1
+s.method2
+s.method3
+
+
+-private:
+   Ex : class Some
+
+    def initialize
+        method1
+        # self.method1
+    end
+
+    private
+
+     def method1
+         puts "private method1 called"
+     end
+
+end
+
+
+s = Some.new
+# s.method1
+class Some1 < Some
+  def thuNghiem
+      # self.method1;
+      method1
+  end
+
+end
+b = Some1.new
+
+
+
+-protected
+class Some
+
+    def initialize
+        method1
+        self.method1
+    end
+
+    protected
+
+     def method1
+         puts "protected method1 called"
+     end
+
+end
+
+
+s = Some.new
+
+class Some1 < Some
+  def thuNghiem
+      self.method1;
+      # method1; khong duoc khi ke thu trong class khac
+  end
+
+end
+b = Some1.new
+
+
