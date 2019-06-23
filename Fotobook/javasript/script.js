@@ -13,12 +13,15 @@
 // var span = document.getElementsByClassName("close")[0];
 
 // // When the user clicks on <span> (x), close the modal
-// span.onclick = function() { 
+// span.onclick = function() {
 //   modal.style.display = "none";
 // }
 
 		$(".HeartAnimation").click(function() {
 			$(this).toggleClass("animate");
 		});
-	
 
+$(document).on("click", ".openImageDialog", function () {
+    var myImageId = $(this).data('id');
+    $(".modal-body #myImage").attr("src", myImageId);
+});
